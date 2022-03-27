@@ -1,0 +1,39 @@
+.nav-logo {
+  width: 100%;
+  height: 100%;
+}
+.navsize {
+  background-color: "white" !important;
+}
+
+.image1 {
+  width: 150px;
+  height: 50px;
+  margin-right: 0px;
+  margin-left: 12px;
+}
+
+.nav-link {
+  font-size: 1rem;
+}
+
+.nav-item {
+  padding: auto 14px;
+}
+.nav-item li {
+  padding: auto;
+}
+
+.getstarted {
+  padding: 10px 8px;
+  font-weight: 600;
+  margin-left: 20px;
+}
+/* .navbar-brand {
+  margin-left: 11%;
+} */
+
+.nc {
+  margin-left: 11%;
+  margin-right: 11%;
+}
