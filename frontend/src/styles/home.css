@@ -9,3 +9,18 @@
   font-weight: 500;
   margin-top: 20px;
 }
+.head{
+  text-align: center;
+  font-size: 2rem ;
+}
+.list{
+  list-style: none;
+}
+.body-last{
+  text-align: center;
+  font-size: 3rem;
+}
+.body-back{
+  background-color: rgb(236, 236, 248);
+  padding: 50px;
+}
