@@ -35,7 +35,7 @@ export default function Register() {
     });
 
     const data = await res.json();
-    if (res.status === 422 || !data) {
+    if (res.status === 401 || !data) {
       window.alert("invalid registration");
     } else {
       window.alert("successful registration");

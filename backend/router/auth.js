@@ -30,46 +30,51 @@ router.get("/", (req, res) => {
 // using async await
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
+  console.log(name, email, password);
   if (!name || !email || !password) {
     return res.json({ error: "plz fill all the details" });
   }
   try {
     const userExist = await User.findOne({ email: email });
     if (userExist) {
-      return res.status(422).json({ error: "email already exist" });
+      return res.status(401).json({ error: "email already exist" });
     }
     const user = new User({ name, email, password });
-    await user.save();
-    res.send(201).json("success");
+    const userRegister = await user.save();
+    if (userRegister) {
+      res.status(201).json({ message: "success" });
+    } else {
+      res.status(500).json({ error: "error" });
+    }
   } catch (err) {
     console.log(err);
   }
 });
 
 // login route
-router.post("/login", async (req, res) => {
-  try {
-    let token;
-    const { email, password } = req.body;
-    if (!email || !password) {
-      return res.status(400).json("please fill the entries");
-    }
-    const userLogin = await User.findOne({ email: email });
-    if (userLogin) {
-      const isMatch = await bcrypt.compare(password, userLogin.password);
+// router.post("/login", async (req, res) => {
+//   try {
+//     let token;
+//     const { email, password } = req.body;
+//     if (!email || !password) {
+//       return res.status(400).json("please fill the entries");
+//     }
+//     const userLogin = await User.findOne({ email: email });
+//     if (userLogin) {
+//       const isMatch = await bcrypt.compare(password, userLogin.password);
 
-      token = await userLogin.generateAuthToken();
-      res.cookie("jwtoken", token, {
-        expires: new Date(Date.now() + 25892000000),
-        httpOnly: true,
-      });
-      if (isMatch) res.json({ message: "user logged in successfully" });
-      else res.json({ error: "user not found" });
-    } else {
-      res.send("password dosent match");
-    }
-  } catch (err) {
-    console.log(err);
-  }
-});
+//       token = await userLogin.generateAuthToken();
+//       res.cookie("jwtoken", token, {
+//         expires: new Date(Date.now() + 25892000000),
+//         httpOnly: true,
+//       });
+//       if (isMatch) res.json({ message: "user logged in successfully" });
+//       else res.json({ error: "user not found" });
+//     } else {
+//       res.send("password dosent match");
+//     }
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 module.exports = router;
