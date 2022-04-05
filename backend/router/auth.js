@@ -51,30 +51,30 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// login route
-// router.post("/login", async (req, res) => {
-//   try {
-//     let token;
-//     const { email, password } = req.body;
-//     if (!email || !password) {
-//       return res.status(400).json("please fill the entries");
-//     }
-//     const userLogin = await User.findOne({ email: email });
-//     if (userLogin) {
-//       const isMatch = await bcrypt.compare(password, userLogin.password);
+//login route
+router.post("/login", async (req, res) => {
+  try {
+    let token;
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.status(400).json("please fill the entries");
+    }
+    const userLogin = await User.findOne({ email: email });
+    if (userLogin) {
+      const isMatch = await bcrypt.compare(password, userLogin.password);
 
-//       token = await userLogin.generateAuthToken();
-//       res.cookie("jwtoken", token, {
-//         expires: new Date(Date.now() + 25892000000),
-//         httpOnly: true,
-//       });
-//       if (isMatch) res.json({ message: "user logged in successfully" });
-//       else res.json({ error: "user not found" });
-//     } else {
-//       res.send("password dosent match");
-//     }
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
+      token = await userLogin.generateAuthToken();
+      res.cookie("jwtoken", token, {
+        expires: new Date(Date.now() + 25892000000),
+        httpOnly: true,
+      });
+      if (isMatch) res.json({ message: "user logged in successfully" });
+      else res.json({ error: "user not found" });
+    } else {
+      res.send("password dosent match");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
 module.exports = router;
