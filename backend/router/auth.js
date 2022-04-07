@@ -62,16 +62,17 @@ router.post("/login", async (req, res) => {
     const userLogin = await User.findOne({ email: email });
     if (userLogin) {
       const isMatch = await bcrypt.compare(password, userLogin.password);
-
+      console.log(password);
       token = await userLogin.generateAuthToken();
       res.cookie("jwtoken", token, {
         expires: new Date(Date.now() + 25892000000),
         httpOnly: true,
       });
       if (isMatch) res.json({ message: "user logged in successfully" });
-      else res.json({ error: "user not found" });
+      else res.status(401).json({ error: "user not found" });
     } else {
-      res.send("password dosent match");
+      res.status(401).json({ error: "password dosent match" });
+      // res.send("password dosent match");
     }
   } catch (err) {
     console.log(err);

@@ -12,6 +12,7 @@ export default function Login() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
       },
       body: JSON.stringify({
         email: email,
@@ -19,7 +20,7 @@ export default function Login() {
       }),
     });
     const data = res.json();
-    if (res.status === 400 || !data) {
+    if (res.status === 401 || !data) {
       window.alert("invalid details");
     } else {
       window.alert("successful");
@@ -42,8 +43,9 @@ export default function Login() {
                 </div>
               </div>
             </div>
-            <form method="POST">
-              <div className="col-lg-6">
+
+            <div className="col-lg-6">
+              <form method="POST">
                 <div className="card2 card border-0 px-4 py-5">
                   <div className="row px-3">
                     {" "}
@@ -96,8 +98,8 @@ export default function Login() {
                     </small>{" "}
                   </div>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>

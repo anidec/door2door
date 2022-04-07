@@ -40,7 +40,7 @@ function Navbar() {
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/signin">
-                  Help
+                  Sign in
                 </NavLink>
               </li>
             </ul>

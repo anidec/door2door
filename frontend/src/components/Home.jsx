@@ -56,7 +56,7 @@ function Home() {
           <div className="col-lg-6">
             <img
               src={body}
-              style={{ width: "100%", height: "100%" }}
+              style={{ width: "100%", height: "90%", paddingTop: "10%" }}
               className="home-pic"
             ></img>
           </div>
@@ -151,7 +151,7 @@ function Home() {
             <br />
             <img
               src={body2}
-              style={{ width: "150%", height: "80%" }}
+              style={{ width: "150%", height: "70%", paddingTop: "30%" }}
               className="home-pic"
             ></img>
           </div>
