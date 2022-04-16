@@ -8,7 +8,7 @@ import l3 from "../images/l3.png";
 import "../styles/home.css";
 function Home() {
   return (
-    <>
+    <div>
       <div className="container">
         <div className="row">
           <div className="col-lg-6 home-text">
@@ -169,7 +169,7 @@ function Home() {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

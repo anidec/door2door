@@ -89,6 +89,7 @@ router.post("/login", async (req, res) => {
   }
 });
 router.post("/registerWorker", async (req, res) => {
+  // res.render('../frontend/src/components/registerWorker.jsx', {title: 'POST registerWorker'});
   const {
     name,
     email,

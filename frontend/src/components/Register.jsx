@@ -43,7 +43,7 @@ export default function Register() {
     }
   };
   return (
-    <>
+    <div>
       <div className="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
         <div className="card card0 border-0">
           <div className="row d-flex">
@@ -118,6 +118,6 @@ export default function Register() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
