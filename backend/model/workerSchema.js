@@ -1,7 +1,18 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const userSchema = new mongoose.Schema({
+
+const servicesSchema = new mongoose.Schema({
+  id: {
+    type: String,
+  },
+  text: {
+    type: String,
+    required: true,
+  },
+});
+
+const workerSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -14,6 +25,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  verificationNo: {
+    type: String,
+    required: true,
+  },
   phoneNo: {
     type: Number,
     required: true,
@@ -22,6 +37,15 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  age: {
+    type: Number,
+    required: true,
+  },
+  gender: {
+    type: String,
+    required: true,
+  },
+  services: [servicesSchema],
   tokens: [
     {
       token: {
@@ -30,11 +54,23 @@ const userSchema = new mongoose.Schema({
       },
     },
   ],
+  reasons: {
+    type: String,
+    required: true,
+  },
+  recommendation: {
+    type: Number,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
 });
 
 //we are hashing the password
 
-userSchema.pre("save", async function (next) {
+workerSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
     this.password = await bcrypt.hash(this.password, 12);
   }
@@ -42,7 +78,7 @@ userSchema.pre("save", async function (next) {
 });
 
 //we are generating token
-userSchema.methods.generateAuthToken = async function () {
+workerSchema.methods.generateAuthToken = async function () {
   try {
     let token = jwt.sign({ _id: this._id }, process.env.SECRET_KEY);
     this.tokens = this.tokens.concat({ token: token });
@@ -53,5 +89,5 @@ userSchema.methods.generateAuthToken = async function () {
   }
 };
 
-const User = mongoose.model("USER", userSchema);
-module.exports = User;
+const Worker = mongoose.model("WORKER", workerSchema);
+module.exports = Worker;

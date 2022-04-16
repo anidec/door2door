@@ -34,8 +34,9 @@ function Navbar() {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/join">
-                  Join
+                {/* join */}
+                <NavLink className="nav-link" to="/profile">
+                  Profile
                 </NavLink>
               </li>
               <li className="nav-item">
