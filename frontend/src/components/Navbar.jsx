@@ -46,7 +46,7 @@ function Navbar() {
               </li>
               <li className="nav-item active">
                 <NavLink className="nav-link" to="/registerWorker">
-                  WorkerRegister
+                  Job in
                 </NavLink>
               </li>
             </ul>
