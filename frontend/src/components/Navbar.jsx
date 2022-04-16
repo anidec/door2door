@@ -4,7 +4,7 @@ import mainLogo from "../images/logo.png";
 import { NavLink } from "react-router-dom";
 function Navbar() {
   return (
-    <>
+    <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light navsize shadow p-3 mb-5 bg-white rounded">
         <div className="container-fluid nc">
           <a className="navbar-brand" href="#">
@@ -44,6 +44,11 @@ function Navbar() {
                   Sign in
                 </NavLink>
               </li>
+              <li className="nav-item active">
+                <NavLink className="nav-link" to="/registerWorker">
+                  Job in
+                </NavLink>
+              </li>
             </ul>
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
@@ -58,7 +63,7 @@ function Navbar() {
           </div>
         </div>
       </nav>
-    </>
+    </div>
   );
 }
 

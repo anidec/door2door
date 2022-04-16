@@ -10,6 +10,8 @@ export default function Register() {
     username: "",
     email: "",
     password: "",
+    location: "",
+    phoneNo:0
   });
   let name, value;
 
@@ -21,7 +23,7 @@ export default function Register() {
   };
   const PostData = async (e) => {
     e.preventDefault();
-    const { username, email, password } = user;
+    const { username, email, password,location,phoneNo } = user;
     const res = await fetch("/register", {
       method: "POST",
       headers: {
@@ -31,6 +33,8 @@ export default function Register() {
         name: username,
         email,
         password,
+        location: location,
+        phoneNo: phoneNo
       }),
     });
 
@@ -43,7 +47,7 @@ export default function Register() {
     }
   };
   return (
-    <>
+    <div>
       <div className="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
         <div className="card card0 border-0">
           <div className="row d-flex">
@@ -100,6 +104,34 @@ export default function Register() {
                       onChange={handleInputs}
                     />
                   </div>
+                  <div className="row px-3">
+                    {" "}
+                    <label className="mb-1">
+                      <h6 className="mb-0 text-sm">Location</h6>
+                    </label>{" "}
+                    <input
+                      className="mb-4"
+                      type="text"
+                      name="location"
+                      placeholder="Enter your location."
+                      value={user.location}
+                      onChange={handleInputs}
+                    />
+                  </div>
+                  <div className="row px-3">
+                    {" "}
+                    <label className="mb-1">
+                      <h6 className="mb-0 text-sm">Phone No.</h6>
+                    </label>{" "}
+                    <input
+                      className="mb-4"
+                      type="Number"
+                      name="phoneNo"
+                      placeholder="Enter your phone number."
+                      value={user.phoneNo}
+                      onChange={handleInputs}
+                    />
+                  </div>
                   <br />
                   <br />
                   <div className="row mb-3 px-3">
@@ -118,6 +150,6 @@ export default function Register() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

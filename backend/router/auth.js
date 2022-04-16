@@ -35,9 +35,9 @@ app.use(express.static("public"));
 // });
 // using async await
 router.post("/register", async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password,location,phoneNo } = req.body;
   console.log(name, email, password);
-  if (!name || !email || !password) {
+  if (!name || !email || !password || !location || !phoneNo) {
     return res.json({ error: "plz fill all the details" });
   }
   try {
@@ -45,7 +45,7 @@ router.post("/register", async (req, res) => {
     if (userExist) {
       return res.status(401).json({ error: "email already exist" });
     }
-    const user = new User({ name, email, password });
+    const user = new User({ name, email, password,location,phoneNo });
     const userRegister = await user.save();
     if (userRegister) {
       res.status(201).json({ message: "success" });
@@ -86,6 +86,7 @@ router.post("/login", async (req, res) => {
   }
 });
 router.post("/registerWorker", async (req, res) => {
+  // res.render('../frontend/src/components/registerWorker.jsx', {title: 'POST registerWorker'});
   const {
     name,
     email,
