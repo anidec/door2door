@@ -6,12 +6,8 @@ const User = require("../model/userSchema");
 const Worker = require("../model/workerSchema");
 const Authenticate = require("../middleware/Authenticate");
 const app = express();
-const cookieParser = require("cookie-parser");
-app.use(cookieParser());
-router.get("/profile", Authenticate, (req, res) => {
-  console.log("chl rha hai");
-  res.send(req.rootUser);
-});
+app.use("/", router);
+app.use(express.static("public"));
 // app.use(cookieParser());
 // router.get("/", (req, res) => {
 //   res.send("hello peter");
@@ -77,6 +73,7 @@ router.post("/login", async (req, res) => {
       res.cookie("jwtoken", token, {
         expires: new Date(Date.now() + 25892000000),
         httpOnly: true,
+        origin: "http://localhost:3000",
       });
       if (isMatch) res.json({ message: "user logged in successfully" });
       else res.status(401).json({ error: "user not found" });
@@ -137,4 +134,8 @@ router.post("/registerWorker", async (req, res) => {
   }
 });
 
+router.get("/profile", Authenticate, (req, res) => {
+  console.log("chl rha hai");
+  res.send(req.rootUser);
+});
 module.exports = router;

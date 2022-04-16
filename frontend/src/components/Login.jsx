@@ -12,15 +12,15 @@ export default function Login() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
       },
       body: JSON.stringify({
         email: email,
         password: password,
       }),
     });
-    const data = res.json();
-    if (res.status === 401 || !data) {
+    const data = await res.json();
+    console.log(data);
+    if (res.status === 401 || res.status === 400 || !data) {
       window.alert("invalid details");
     } else {
       window.alert("successful");
