@@ -17,7 +17,7 @@ export default function RegisterWorker() {
     gender: "",
     reasons: "",
     price: 0,
-    recommendation: 0
+    recommendation: 0,
   });
   let name, value;
 
@@ -29,7 +29,19 @@ export default function RegisterWorker() {
   };
   const PostData = async (e) => {
     e.preventDefault();
-    const { username, email, password,location ,verificationNo ,phoneNo ,age ,gender ,reasons ,price ,recommendation } = user;
+    const {
+      username,
+      email,
+      password,
+      location,
+      verificationNo,
+      phoneNo,
+      age,
+      gender,
+      reasons,
+      price,
+      recommendation,
+    } = user;
     const res = await fetch("/registerWorker", {
       method: "POST",
       headers: {
@@ -46,7 +58,7 @@ export default function RegisterWorker() {
         gender: gender,
         price: price,
         recommendation: recommendation,
-        reasons: reasons
+        reasons: reasons,
       }),
     });
 
@@ -177,56 +189,56 @@ export default function RegisterWorker() {
                     <label className="mb-1">
                       <h6 className="mb-0 text-sm">Gender</h6>
                     </label>{" "}
-                        <input
-                        className="mb-4"
-                        type="string"
-                        name="gender"
-                        placeholder="Enter your gender"
-                        value={user.gender}
-                        onChange={handleInputs}
-                        />
+                    <input
+                      className="mb-4"
+                      type="string"
+                      name="gender"
+                      placeholder="Enter your gender"
+                      value={user.gender}
+                      onChange={handleInputs}
+                    />
                   </div>
                   <div className="row px-3">
                     {" "}
                     <label className="mb-1">
                       <h6 className="mb-0 text-sm">Reasons</h6>
                     </label>{" "}
-                        <input
-                        className="mb-4"
-                        type="string"
-                        name="reasons"
-                        placeholder="Enter your gender"
-                        value={user.reasons}
-                        onChange={handleInputs}
-                        />
+                    <input
+                      className="mb-4"
+                      type="string"
+                      name="reasons"
+                      placeholder="Enter your gender"
+                      value={user.reasons}
+                      onChange={handleInputs}
+                    />
                   </div>
                   <div className="row px-3">
                     {" "}
                     <label className="mb-1">
                       <h6 className="mb-0 text-sm">Price</h6>
                     </label>{" "}
-                        <input
-                        className="mb-4"
-                        type="Number"
-                        name="price"
-                        placeholder="Enter your gender"
-                        value={user.price}
-                        onChange={handleInputs}
-                        />
+                    <input
+                      className="mb-4"
+                      type="Number"
+                      name="price"
+                      placeholder="Enter your gender"
+                      value={user.price}
+                      onChange={handleInputs}
+                    />
                   </div>
                   <div className="row px-3">
                     {" "}
                     <label className="mb-1">
                       <h6 className="mb-0 text-sm">Recommendation</h6>
                     </label>{" "}
-                        <input
-                        className="mb-4"
-                        type="Number"
-                        name="recommendation"
-                        placeholder="Enter your gender"
-                        value={user.recommendation}
-                        onChange={handleInputs}
-                        />
+                    <input
+                      className="mb-4"
+                      type="Number"
+                      name="recommendation"
+                      placeholder="Enter your gender"
+                      value={user.recommendation}
+                      onChange={handleInputs}
+                    />
                   </div>
                   <br />
                   <br />

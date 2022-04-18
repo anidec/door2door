@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../styles/login.css";
 import { useNavigate } from "react-router-dom";
 import logo from "../images/logo.png";
 import login from "../images/login.png";
 import Navbar from "./Navbar";
+import { UserContext } from "../App";
 export default function Login() {
+  const { state, dispatch } = useContext(UserContext);
   const navigate = useNavigate();
   const loginUser = async (e) => {
     e.preventDefault();
@@ -16,6 +18,7 @@ export default function Login() {
       body: JSON.stringify({
         email: email,
         password: password,
+        role,
       }),
     });
     const data = await res.json();
@@ -23,12 +26,15 @@ export default function Login() {
     if (res.status === 401 || res.status === 400 || !data) {
       window.alert("invalid details");
     } else {
+      dispatch({ type: "USER", payload: true });
       window.alert("successful");
+
       navigate("/");
     }
   };
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
 
   return (
     <div>
@@ -80,6 +86,34 @@ export default function Login() {
                   </div>
                   <br />
                   <br />
+                  <div class="form-check">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="flexRadioDefault"
+                      id="flexRadioDefault1"
+                      onClick={(e) => {
+                        setRole(0);
+                      }}
+                    ></input>
+                    <label className="form-check-label" for="flexRadioDefault1">
+                      Are you a housekeeper
+                    </label>
+                  </div>
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="flexRadioDefault"
+                      id="flexRadioDefault2"
+                      onClick={(e) => {
+                        setRole(1);
+                      }}
+                    ></input>
+                    <label className="form-check-label" for="flexRadioDefault2">
+                      Are you a client
+                    </label>
+                  </div>
                   <div className="row mb-3 px-3">
                     {" "}
                     <button

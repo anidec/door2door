@@ -66,6 +66,10 @@ const workerSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  role:{
+    type:Number,
+    default:0
+  }
 });
 
 //we are hashing the password

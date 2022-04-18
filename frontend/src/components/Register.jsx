@@ -11,7 +11,7 @@ export default function Register() {
     email: "",
     password: "",
     location: "",
-    phoneNo:0
+    phoneNo: 0,
   });
   let name, value;
 
@@ -23,7 +23,7 @@ export default function Register() {
   };
   const PostData = async (e) => {
     e.preventDefault();
-    const { username, email, password,location,phoneNo } = user;
+    const { username, email, password, location, phoneNo } = user;
     const res = await fetch("/register", {
       method: "POST",
       headers: {
@@ -34,7 +34,7 @@ export default function Register() {
         email,
         password,
         location: location,
-        phoneNo: phoneNo
+        phoneNo: phoneNo,
       }),
     });
 

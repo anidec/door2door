@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 function Profile() {
+  const [userData, setuserData] = useState("");
   const navigate = useNavigate();
   const callProfilePage = async () => {
     try {
@@ -14,6 +15,7 @@ function Profile() {
       });
       const data = await res.json();
       console.log(data);
+      setuserData(data);
       if (!res.status === 200) {
         const error = new Error(res.error);
         throw error;
@@ -28,7 +30,7 @@ function Profile() {
   }, []);
   return (
     <div>
-      <form method="GET"></form>
+      <h1>{userData.name}</h1>
     </div>
   );
 }

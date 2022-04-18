@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import main from "../images/main.png";
 import body from "../images/body.png";
 import body2 from "../images/body2.png";
@@ -6,6 +6,7 @@ import l1 from "../images/l1.png";
 import l2 from "../images/l2.png";
 import l3 from "../images/l3.png";
 import "../styles/home.css";
+import { useNavigate } from "react-router-dom";
 function Home() {
   return (
     <div>

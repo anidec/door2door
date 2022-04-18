@@ -7,7 +7,6 @@ const Worker = require("../model/workerSchema");
 const Authenticate = require("../middleware/Authenticate");
 const app = express();
 app.use("/", router);
-app.use(express.static("public"));
 // app.use(cookieParser());
 // router.get("/", (req, res) => {
 //   res.send("hello peter");
@@ -61,11 +60,13 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     let token;
-    const { email, password } = req.body;
+    const { email, password,role} = req.body;
     if (!email || !password) {
       return res.status(400).json("please fill the entries");
     }
-    const userLogin = await User.findOne({ email: email });
+    if(role==1)
+    {
+      const userLogin = await User.findOne({ email: email });
     if (userLogin) {
       const isMatch = await bcrypt.compare(password, userLogin.password);
       console.log(password);
@@ -75,16 +76,41 @@ router.post("/login", async (req, res) => {
         httpOnly: true,
         origin: "http://localhost:3000",
       });
+      // console.log("username: ",userLogin.name);
       if (isMatch) res.json({ message: "user logged in successfully" });
       else res.status(401).json({ error: "user not found" });
-    } else {
+    }
+     else {
       res.status(401).json({ error: "password dosent match" });
       // res.send("password dosent match");
     }
+    }
+    else if(role==0)
+    {
+      const workerLogin = await Worker.findOne({ email: email });
+    if (workerLogin) {
+      const isMatch = await bcrypt.compare(password, workerLogin.password);
+      console.log(password);
+      token = await workerLogin.generateAuthToken();
+      res.cookie("jwtoken", token, {
+        expires: new Date(Date.now() + 25892000000),
+        httpOnly: true,
+        origin: "http://localhost:3000",
+      });
+      if (isMatch) res.json({ message: "user logged in successfully" });
+      else res.status(401).json({ error: "user not found" });
+    }
+     else {
+      res.status(401).json({ error: "password dosent match" });
+      // res.send("password dosent match");
+    }
+    }
+    
   } catch (err) {
     console.log(err);
   }
 });
+
 router.post("/registerWorker", async (req, res) => {
   // res.render('../frontend/src/components/registerWorker.jsx', {title: 'POST registerWorker'});
   const {
@@ -139,4 +165,13 @@ router.get("/profile", Authenticate, (req, res) => {
   console.log("chl rha hai");
   res.send(req.rootUser);
 });
+router.get('/get',Authenticate,(req,res)=>{
+  console.log('hello my about');
+  res.send(req.rootUser)
+})
+router.get('/logout',(req,res)=>{
+  console.log('hello my about');
+  res.clearCookie('jwtoken',{path:'/'});
+  res.status(200).send("User Logged Out")
+})
 module.exports = router;
