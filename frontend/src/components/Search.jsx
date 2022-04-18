@@ -1,25 +1,16 @@
-import react from 'react'
-import reactDom from 'react-dom'
+import react, { useState, useEffect } from "react";
+import reactDom from "react-dom";
+import axios from "axios";
 
-import '../styles/search.css'
-import cards from './cards'
-function Cards() {
-    return (
-        <section className='cards'>
-            {/* <Search /> */}
-            {cards.map((card,index)=>{
-                return <Card key={index} card={card}></Card>;
-            })}
-        </section>
-    );
-}
+import "../styles/search.css";
+import cards from "./cards";
 // const Search = () => {
 //     return (
 //         <section>
-//             <input 
-//                 type = 'text' 
-//                 nmae='search' 
-//                 value={} 
+//             <input
+//                 type = 'text'
+//                 nmae='search'
+//                 value={}
 //                 }
 //                 >
 
@@ -27,15 +18,33 @@ function Cards() {
 //         </section>
 //     );
 // }
+
 const Card = (props) => {
-    const {names, location , phoneNo , price} = props.card;
-    return (
-        <div className='card'>
-            Name: {names}<br />
-            Location: {location}<br />
-            PhoneNo: {phoneNo}<br />
-            Price: {price}<br />
-        </div>
-    );
-}
-export default Cards;
+  const [workers, setWorkers] = useState([]);
+  useEffect(() => {
+    axios
+      .get("/data")
+      .then((res) => setWorkers(res.data))
+      .catch((error) => console.log(error));
+  }, []);
+  //   const { name, location, phoneNo, price } = workers[0];
+  return (
+    <section className="cards">
+      {workers.map((worker, key) => {
+        return (
+          <div className="card">
+            Name: {worker.name}
+            <br />
+            Location: {worker.location}
+            <br />
+            PhoneNo: {worker.phoneNo}
+            <br />
+            Price: {worker.price}
+            <br />
+          </div>
+        );
+      })}
+    </section>
+  );
+};
+export default Card;

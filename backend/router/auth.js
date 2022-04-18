@@ -165,6 +165,10 @@ router.get("/profile", Authenticate, (req, res) => {
   console.log("chl rha hai");
   res.send(req.rootUser);
 });
+router.get("/data",(req,res)=>{
+  Worker.find().then(worker=>res.json(worker))
+  .then((err)=>res.status(400))
+})
 router.get('/get',Authenticate,(req,res)=>{
   console.log('hello my about');
   res.send(req.rootUser)
