@@ -6,6 +6,8 @@ import Register from "./components/Register";
 import Profile from "./components/Profile";
 import RegisterWorker from "./components/RegisterWorker";
 import LogOut from "./components/LogOut";
+import Search from "./components/Search";
+
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { initialState, reducer } from "./reducer/UseReducer";
 export const UserContext = createContext();
@@ -18,6 +20,7 @@ const Routing = () => {
       <Route path="/profile" element={<Profile />}></Route>
       <Route path="/registerWorker" element={<RegisterWorker />}></Route>
       <Route path="/LogOut" element={<LogOut />}></Route>
+      <Route path="/search" element={<Search />}></Route>
     </Routes>
   );
 };
@@ -29,7 +32,7 @@ function App() {
     <>
       <UserContext.Provider value={{ state, dispatch }}>
         <Navbar />
-        <Routing></Routing>
+        <Routing />
       </UserContext.Provider>
     </>
   );

@@ -49,6 +49,12 @@ function Navbar() {
                     </NavLink>
                   </li>
                   <li className="nav-item">
+                    {/* join */}
+                    <NavLink className="nav-link" to="/search">
+                      Search
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
                     <NavLink className="nav-link" to="/signin">
                       Sign in
                     </NavLink>
@@ -115,6 +121,12 @@ function Navbar() {
                     {/* join */}
                     <NavLink className="nav-link" to="/profile">
                       Profile
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    {/* join */}
+                    <NavLink className="nav-link" to="/search">
+                      Search
                     </NavLink>
                   </li>
                   <li className="nav-item">
