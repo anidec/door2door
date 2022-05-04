@@ -32,15 +32,19 @@ const Card = (props) => {
     <section className="cards">
       {workers.map((worker, key) => {
         return (
-          <div className="card">
-            Name: {worker.name}
-            <br />
-            Location: {worker.location}
-            <br />
-            PhoneNo: {worker.phoneNo}
-            <br />
-            Price: {worker.price}
-            <br />
+          <div className="card-sec">
+            <div className="card">
+                <img src={"https://p.kindpng.com/picc/s/24-248729_stockvader-predicted-adig-user-profile-image-png-transparent.png"} className="card-img"/>
+                <div className="card-info">
+                    <span className="card-category card-color">{(worker.location).toUpperCase()}</span>
+                    <h3 className="card-title">{worker.name}</h3>
+                    <span className="card-category">{worker.phoneNo}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span className="card-category card-color ">{worker.price}</span><br /><br />
+                    <a href="">
+                        <button className="card-submit card-color">BOOK</button>
+                    </a>
+                </div>
+            </div>
           </div>
         );
       })}
