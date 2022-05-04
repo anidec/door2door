@@ -27,8 +27,9 @@ export default function Login() {
       window.alert("invalid details");
     } else {
       dispatch({ type: "USER", payload: true });
-      window.alert("successful");
+      console.log("state is this:", state);
 
+      window.alert("successful");
       navigate("/");
     }
   };

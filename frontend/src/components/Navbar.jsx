@@ -9,6 +9,8 @@ function Navbar() {
   // const [userName, setuserName] = useState("");
   // const [show, setShow] = useState(false);
   const { state, dispatch } = useContext(UserContext);
+
+  console.log("state is this:", state);
   const navigate = useNavigate();
   const RenderMenu = () => {
     if (state) {

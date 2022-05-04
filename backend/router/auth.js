@@ -163,6 +163,7 @@ router.post("/registerWorker", async (req, res) => {
 
 router.get("/profile", Authenticate, (req, res) => {
   console.log("chl rha hai");
+  console.log(req.rootUser)
   res.send(req.rootUser);
 });
 router.get("/data",(req,res)=>{
@@ -177,5 +178,54 @@ router.get('/logout',(req,res)=>{
   console.log('hello my about');
   res.clearCookie('jwtoken',{path:'/'});
   res.status(200).send("User Logged Out")
+})
+router.delete('/delete/:id',(req,res)=>{
+  const id=req.params.id;
+  User.findByIdAndDelete({_id:id},(req,res,err)=>{
+    if(!err)
+    console.log('item deleted')
+    else
+    console.log(err)
+  })
+})
+router.put('/put/:id',(req,res)=>{
+  let check;
+  check=req.body.role;
+  console.log(check)
+  if(check==1)
+  {
+    const updatedItem={
+      name:req.body.name,
+      email:req.body.email,
+      location:req.body.location,
+      phoneNo:req.body.phoneNo
+  
+    }
+    User.findByIdAndUpdate({_id:req.params.id},{$set:updatedItem},(req,res,err)=>{
+      if(!err)
+      console.log("item updated");
+      else
+      console.log(err);
+    })
+  }
+  else{
+    const updatedItem={
+      name:req.body.name,
+      email:req.body.email,
+      location:req.body.location,
+      phoneNo:req.body.phoneNo,
+      price:req.body.price,
+      reasons:req.body.reasons
+  
+    }
+    Worker.findByIdAndUpdate({_id:req.params.id},{$set:updatedItem},(req,res,err)=>{
+      if(!err)
+      console.log("item updated");
+      else
+      console.log(err);
+    })
+  }
+  
+  // res.redirect("/")
 })
 module.exports = router;
