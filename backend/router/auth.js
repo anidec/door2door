@@ -162,8 +162,7 @@ router.post("/registerWorker", async (req, res) => {
 });
 
 router.get("/profile", Authenticate, (req, res) => {
-  console.log("chl rha hai");
-  console.log(req.rootUser)
+  // console.log(req.rootUser)
   res.send(req.rootUser);
 });
 router.get("/data",(req,res)=>{
@@ -188,6 +187,13 @@ router.delete('/delete/:id',(req,res)=>{
     console.log(err)
   })
 })
+router.get("/get/profile/:id",(req,res)=>{
+  // console.log(req.params.id);
+  // const found = Worker.findOne({_id:req.params.id});
+  // res.json(found);
+  Worker.findOne({_id:req.params.id}).then(worker=>res.send(worker))
+  .then((err)=>res.status(400))
+});
 router.put('/put/:id',(req,res)=>{
   let check;
   check=req.body.role;

@@ -7,7 +7,7 @@ import Profile from "./components/Profile";
 import RegisterWorker from "./components/RegisterWorker";
 import LogOut from "./components/LogOut";
 import Search from "./components/Search";
-
+import BookingProfile from "./components/BookingProfile";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { initialState, reducer } from "./reducer/UseReducer";
 export const UserContext = createContext();
@@ -21,6 +21,7 @@ const Routing = () => {
       <Route path="/registerWorker" element={<RegisterWorker />}></Route>
       <Route path="/LogOut" element={<LogOut />}></Route>
       <Route path="/search" element={<Search />}></Route>
+      <Route path="/bookingProfile" element={<BookingProfile />}></Route>
     </Routes>
   );
 };
