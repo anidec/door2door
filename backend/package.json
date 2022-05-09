@@ -6,6 +6,7 @@
         "express": "^4.17.3",
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^6.2.8",
-        "prettier": "^9.5.0"
+        "nodemailer": "^6.7.5",
+        "nodemailer-mailgun-transport": "^2.1.3"
     }
 }

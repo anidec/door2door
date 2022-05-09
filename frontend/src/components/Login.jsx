@@ -23,7 +23,7 @@ export default function Login() {
     });
     const data = await res.json();
     console.log(data);
-    if (res.status === 401 || res.status === 400 || !data) {
+    if (res.status === 401 || !data) {
       window.alert("invalid details");
     } else {
       dispatch({ type: "USER", payload: true });
@@ -87,7 +87,7 @@ export default function Login() {
                   </div>
                   <br />
                   <br />
-                  <div class="form-check">
+                  <div className="form-check">
                     <input
                       className="form-check-input"
                       type="radio"

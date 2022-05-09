@@ -19,6 +19,8 @@ import cards from "./cards";
 //     );
 // }
 
+let orignalWorkers = [];
+
 const Card = (props) => {
   const [workers, setWorkers] = useState([]);
   const [workerID, setWorkerID] = useState();
@@ -27,12 +29,27 @@ const Card = (props) => {
       .get("/data")
       .then((res) => {
         setWorkers(res.data);
+        orignalWorkers = res.data;
       })
       .catch((error) => console.log(error));
   }, []);
 
+  const search = (e) => {
+    // if (e.target.value.length === 0) {
+    //   setWorkers(orignalWorkers);
+    //   return;
+    // }
+    const newWorkers = orignalWorkers.filter((item) =>
+      item.name.includes(e.target.value)
+    );
+    setWorkers(newWorkers);
+  };
+
   return (
     <section className="cards">
+      <div>
+        <input type="text" onChange={(e) => search(e)}></input>
+      </div>
       {workers.map((worker, key) => {
         return (
           <div className="card-sec">

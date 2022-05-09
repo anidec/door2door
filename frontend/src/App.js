@@ -10,12 +10,14 @@ import Search from "./components/Search";
 import BookingProfile from "./components/BookingProfile";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { initialState, reducer } from "./reducer/UseReducer";
+import Donate from "./components/Donate";
 export const UserContext = createContext();
 const Routing = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />}></Route>
       <Route path="/login" element={<Login />}></Route>
+      <Route path="/donate" element={<Donate />}></Route>
       <Route path="/signin" element={<Register />}></Route>
       <Route path="/profile" element={<Profile />}></Route>
       <Route path="/registerWorker" element={<RegisterWorker />}></Route>
