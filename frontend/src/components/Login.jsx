@@ -12,8 +12,6 @@ export default function Login() {
   const { state, dispatch } = useContext(UserContext);
   const navigate = useNavigate();
 
-  toast.dark("Login clicked!");
-
   const loginUser = async (e) => {
     e.preventDefault();
     const res = await fetch("/login", {
@@ -27,15 +25,17 @@ export default function Login() {
         role,
       }),
     });
+
     const data = await res.json();
     console.log(data);
-    if (res.status === 401 || !data) {
+
+    const a = localStorage.setItem("user_email", email);
+    if (res.status === 401 || res.status === 400 || !data) {
       window.alert("invalid details");
     } else {
       dispatch({ type: "USER", payload: true });
       console.log("state is this:", state);
-
-      window.alert("successful");
+      // if (type == true) toast.dark("Login clicked!");
       navigate("/");
     }
   };

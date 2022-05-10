@@ -2,10 +2,28 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 function Profile() {
-  const [userData, setuserData] = useState("");
-  const [workerData, setworkerData] = useState("");
+  const [userData, setuserData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    location: "",
+    phoneNo: 0,
+  });
+  const [check, setCheck] = useState(0);
+  const [workerData, setworkerData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    location: "",
+    verificationNo: "",
+    phoneNo: 0,
+    age: 0,
+    gender: "",
+    reasons: "",
+    price: 0,
+    recommendation: 0,
+  });
   const navigate = useNavigate();
-  let check;
   const callProfilePage = async () => {
     try {
       const res = await fetch("/profile", {
@@ -17,10 +35,13 @@ function Profile() {
         credentials: "include",
       });
       const data = await res.json();
-      console.log(data);
-      check = data.role;
-      if (data.role == 1) setuserData(data);
-      else setworkerData(data);
+      setCheck(data.role);
+
+      if (data.role == 1) {
+        setuserData(data);
+        console.log("user data is below");
+        console.log(userData);
+      } else setworkerData(data);
       if (!res.status === 200) {
         const error = new Error(res.error);
         throw error;
@@ -58,7 +79,6 @@ function Profile() {
     console.log(`updated item with id ${id}`);
     navigate("/");
   };
-
   if (check == 1) {
     return (
       <div>

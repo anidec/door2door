@@ -1,5 +1,6 @@
 import react, { useState, useEffect } from "react";
 import { NavLink, useNavigate, Link } from "react-router-dom";
+import { faker } from "@faker-js/faker";
 import reactDom from "react-dom";
 import axios from "axios";
 import "../styles/search.css";
@@ -46,52 +47,57 @@ const Card = (props) => {
   };
 
   return (
-    <section className="cards">
+    <>
       <div>
         <input type="text" onChange={(e) => search(e)}></input>
       </div>
-      {workers.map((worker, key) => {
-        return (
-          <div className="card-sec">
-            <div className="card">
-              <img
-                src={
-                  "https://p.kindpng.com/picc/s/24-248729_stockvader-predicted-adig-user-profile-image-png-transparent.png"
-                }
-                className="card-img"
-              />
-              <div className="card-info">
-                <span className="card-category card-color">
-                  {worker.location.toUpperCase()}
-                </span>
-                <h3 className="card-title">{worker.name}</h3>
-                <span className="card-category">{worker.phoneNo}</span>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <span className="card-category card-color ">
-                  {worker.price}
-                </span>
-                <br />
-                <br />
-                <Link
-                  to={{
-                    pathname: "/bookingProfile",
-                  }}
-                >
-                  <button
-                    onClick={() => {
-                      console.log(worker._id);
-                      localStorage.setItem("id", worker._id);
+      <section className="cards">
+        {workers.map((worker, key) => {
+          return (
+            <div className="card-sec">
+              <div className="card">
+                <img
+                  src={`https://picsum.photos/200/300?random=10/${Math.floor(
+                    Math.random() * 1000
+                  )}`}
+                  className="card-img"
+                />
+                <div className="card-info">
+                  <span className="card-category card-color">
+                    {worker.location.toUpperCase()}
+                  </span>
+                  <h3 className="card-title">{worker.name}</h3>
+                  <span className="card-category">{worker.phoneNo}</span>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <span className="card-category card-color ">
+                    {worker.price}
+                  </span>
+                  <br />
+                  <br />
+                  <Link
+                    to={{
+                      pathname: "/bookingProfile",
                     }}
                   >
-                    BOOK
-                  </button>
-                </Link>
+                    <button
+                      onClick={() => {
+                        console.log(worker._id);
+                        localStorage.setItem("id", worker._id);
+                        localStorage.setItem("name", worker.name);
+                        localStorage.setItem("price", worker.price);
+                      }}
+                      className="btn btn-primary btn-lg btn-block"
+                    >
+                      BOOK
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })}
-    </section>
+          );
+        })}
+      </section>
+    </>
   );
 };
 export default Card;

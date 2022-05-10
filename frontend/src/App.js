@@ -7,7 +7,9 @@ import Profile from "./components/Profile";
 import RegisterWorker from "./components/RegisterWorker";
 import LogOut from "./components/LogOut";
 import Search from "./components/Search";
+import Footer from "./components/Footer";
 import BookingProfile from "./components/BookingProfile";
+import Time from "./components/Time";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { initialState, reducer } from "./reducer/UseReducer";
 import Donate from "./components/Donate";
@@ -24,6 +26,7 @@ const Routing = () => {
       <Route path="/LogOut" element={<LogOut />}></Route>
       <Route path="/search" element={<Search />}></Route>
       <Route path="/bookingProfile" element={<BookingProfile />}></Route>
+      <Route path="/time" element={<Time />}></Route>
     </Routes>
   );
 };
@@ -36,6 +39,7 @@ function App() {
       <UserContext.Provider value={{ state, dispatch }}>
         <Navbar />
         <Routing />
+        <Footer />
       </UserContext.Provider>
     </>
   );

@@ -59,73 +59,7 @@ router.post("/register", async (req, res) => {
   } catch (err) {
     console.log(err);
   }
-  // var email_mc=req.body.email
-  // var temp="hello"
-  // var data = {
-  //   members: [
-  //     {
-  //       email_address: email_mc,
-  //       status: "subscribed",
-  //       merge_fields: {
-  //         FNAME: temp,
-  //         LNAME: temp,
-  //       },
-  //     },
-  //   ],
-  // };
-  // var jsonData = JSON.stringify(data);
 
-  // const options = {
-  //   url: "https://us7.api.mailchimp.com/3.0/lists/a3cc97bef3/members",
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type":"application/json",
-  //     Authorization: "animesh d5a72aa30b2504bcae74186416b2e077-us7",
-  //   },
-  //   body: jsonData,
-  // }
-  // function getRequestParams(email) {
-  //   // get env variables
-  //   const API_KEY = d5a72aa30b2504bcae74186416b2e077-us7;
-  //   const LIST_ID = a3cc97bef3;
-  //   // mailchimp datacenter - mailchimp api keys always look like this:
-  //   // fe4f064432e4684878063s83121e4971-us6
-  //   // We need the us6 part
-
-  //   const url = `https://us7.api.mailchimp.com/3.0/lists/${LIST_ID}/members`;
-
-  //   // Add aditional params here. See full list of available params:
-  //   // https://mailchimp.com/developer/reference/lists/list-members/
-  //   const data = {
-  //     email_address: email,
-  //     status: "subscribed",
-  //   };
-
-  //   // Api key needs to be encoded in base 64 format
-  //   const base64ApiKey = Buffer.from(`anystring:${API_KEY}`).toString("base64");
-  //   const headers = {
-  //     "Content-Type": "application/json",
-  //     Authorization: `Basic ${base64ApiKey}`,
-  //   };
-
-  //   return {
-  //     url,
-  //     data,
-  //     headers,
-  //   };
-  // }
-  // try {
-  //   const { url, data, headers } = getRequestParams(email);
-
-  //   const response = await axios.post(url, data, { headers });
-
-  //   // Success
-  //   return res.status(201).json({ error: null });
-  // } catch (error) {
-  //   return res.status(400).json({
-  //     error: `Oops, something went wrong... Send me an email at uriklar@gmail.com and I'll add you to the list.`,
-  //   });
-  // }
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -137,7 +71,7 @@ router.post("/register", async (req, res) => {
     from: "door2door.jiit@gmail.com",
     to: email,
     subject: "hello peter",
-    text: "tested",
+    text: `Hello ${name}, Thanks for registering to our company.`,
   };
   transporter.sendMail(mailOptions, function (err, data) {
     if (err) console.log(err);
@@ -181,7 +115,6 @@ router.post("/login", async (req, res) => {
         res.cookie("jwtoken", token, {
           expires: new Date(Date.now() + 25892000000),
           httpOnly: true,
-          origin: "http://localhost:3000",
         });
         if (isMatch) res.json({ message: "user logged in successfully" });
         else res.status(401).json({ error: "user not found" });
@@ -246,7 +179,7 @@ router.post("/registerWorker", async (req, res) => {
 });
 
 router.get("/profile", Authenticate, (req, res) => {
-  // console.log(req.rootUser)
+  console.log(req.rootUser);
   res.send(req.rootUser);
 });
 router.get("/data", (req, res) => {
@@ -277,6 +210,27 @@ router.get("/get/profile/:id", (req, res) => {
   Worker.findOne({ _id: req.params.id })
     .then((worker) => res.send(worker))
     .then((err) => res.status(400));
+});
+router.post("/dt", async (req, res) => {
+  const { date, time, email, name, price } = req.body;
+  console.log(date, time, email, name, price);
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "door2door.jiit@gmail.com",
+      pass: "Sameeravish@2022",
+    },
+  });
+  const mailOptions = {
+    from: "door2door.jiit@gmail.com",
+    to: "animeshkaushik10@gmail.com",
+    subject: "regarding door2door services.",
+    text: `Your date is ${date} and time is ${time} and name of worker is ${name} with price ${price}`,
+  };
+  transporter.sendMail(mailOptions, function (err, data) {
+    if (err) console.log(err);
+    else console.log("message sent");
+  });
 });
 router.put("/put/:id", (req, res) => {
   let check;
@@ -315,7 +269,6 @@ router.put("/put/:id", (req, res) => {
       }
     );
   }
-
   // res.redirect("/")
 });
 module.exports = router;
