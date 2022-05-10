@@ -7,21 +7,13 @@ import l2 from "../images/l2.png";
 import l3 from "../images/l3.png";
 import "../styles/home.css";
 import { useNavigate } from "react-router-dom";
-
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 function Home() {
-  const notify = () => toast("Wow so easy !");
-
   return (
     <div>
       <div className="container">
         <div className="row">
-          <div>
-            <button onClick={notify}>Notify !</button>
-            <ToastContainer />
-          </div>
           <div className="col-lg-6 home-text">
             <h1>
               Get your home cleaned

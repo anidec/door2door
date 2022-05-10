@@ -5,9 +5,15 @@ import logo from "../images/logo.png";
 import login from "../images/login.png";
 import Navbar from "./Navbar";
 import { UserContext } from "../App";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function Login() {
   const { state, dispatch } = useContext(UserContext);
   const navigate = useNavigate();
+
+  toast.dark("Login clicked!");
+
   const loginUser = async (e) => {
     e.preventDefault();
     const res = await fetch("/login", {
@@ -50,7 +56,17 @@ export default function Login() {
                 </div>
               </div>
             </div>
-
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
             <div className="col-lg-6">
               <form method="POST">
                 <div className="card2 card border-0 px-4 py-5">

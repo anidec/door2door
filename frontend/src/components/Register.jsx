@@ -4,6 +4,7 @@ import logo from "../images/logo.png";
 import login from "../images/login.png";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
+
 export default function Register() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
@@ -23,6 +24,7 @@ export default function Register() {
   };
   const PostData = async (e) => {
     e.preventDefault();
+
     const { username, email, password, location, phoneNo } = user;
     const res = await fetch("/register", {
       method: "POST",
@@ -42,7 +44,6 @@ export default function Register() {
     if (res.status === 401 || !data) {
       window.alert("invalid registration");
     } else {
-      window.alert("successful registration");
       navigate("/login");
     }
   };

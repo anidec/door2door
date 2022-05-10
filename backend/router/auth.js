@@ -135,7 +135,7 @@ router.post("/register", async (req, res) => {
   });
   const mailOptions = {
     from: "door2door.jiit@gmail.com",
-    to: "hardikag17@gmail.com",
+    to: email,
     subject: "hello peter",
     text: "tested",
   };
