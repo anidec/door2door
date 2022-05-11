@@ -73,7 +73,7 @@ export default function RegisterWorker() {
   return (
     <div>
       <div className="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
-        <div className="card card0 border-0">
+        <div className="card card0 border-0" style={{ display: "inline" }}>
           <div className="row d-flex">
             <div className="col-lg-6">
               <div className="card1 pb-5">
@@ -83,176 +83,114 @@ export default function RegisterWorker() {
                 </div>
               </div>
             </div>
-
-            <div className="col-lg-6">
+            <div className="wrapForm">
               <form method="POST">
+                {/* <form method="POST"> */}
                 <div className="card2 card border-0 px-4 py-5">
-                  <div className="row px-3">
-                    {" "}
-                    <label className="mb-1">
-                      <h6 className="mb-0 text-sm">UserName</h6>
-                    </label>{" "}
-                    <input
-                      className="mb-4"
-                      type="text"
-                      name="username"
-                      placeholder="Enter a valid user name"
-                      value={user.username}
-                      onChange={handleInputs}
-                    />
-                  </div>
-                  <div className="row px-3">
-                    {" "}
-                    <label className="mb-1">
-                      <h6 className="mb-0 text-sm">Email Address</h6>
-                    </label>{" "}
-                    <input
-                      className="mb-4"
-                      type="text"
-                      name="email"
-                      placeholder="Enter a valid email address"
-                      value={user.email}
-                      onChange={handleInputs}
-                    />
-                  </div>
-                  <div className="row px-3">
-                    {" "}
-                    <label className="mb-1">
-                      <h6 className="mb-0 text-sm">Password</h6>
-                    </label>{" "}
-                    <input
-                      type="password"
-                      name="password"
-                      placeholder="Enter password"
-                      value={user.password}
-                      onChange={handleInputs}
-                    />
-                  </div>
-                  <div className="row px-3">
-                    {" "}
-                    <label className="mb-1">
-                      <h6 className="mb-0 text-sm">Location</h6>
-                    </label>{" "}
-                    <input
-                      className="mb-4"
-                      type="text"
-                      name="location"
-                      placeholder="Enter your location."
-                      value={user.location}
-                      onChange={handleInputs}
-                    />
-                  </div>
-                  <div className="row px-3">
-                    {" "}
-                    <label className="mb-1">
-                      <h6 className="mb-0 text-sm">PAN Number</h6>
-                    </label>{" "}
-                    <input
-                      className="mb-4"
-                      type="text"
-                      name="verificationNo"
-                      placeholder="Enter PAN number"
-                      value={user.verificationNo}
-                      onChange={handleInputs}
-                    />
-                  </div>
-                  <div className="row px-3">
-                    {" "}
-                    <label className="mb-1">
-                      <h6 className="mb-0 text-sm">Phone No.</h6>
-                    </label>{" "}
-                    <input
-                      className="mb-4"
-                      type="Number"
-                      name="phoneNo"
-                      placeholder="Enter your phone number."
-                      value={user.phoneNo}
-                      onChange={handleInputs}
-                    />
-                  </div>
-                  <div className="row px-3">
-                    {" "}
-                    <label className="mb-1">
-                      <h6 className="mb-0 text-sm">Age</h6>
-                    </label>{" "}
-                    <input
-                      className="mb-4"
-                      type="number"
-                      name="age"
-                      placeholder="Enter your age"
-                      value={user.age}
-                      onChange={handleInputs}
-                    />
-                  </div>
-                  <div className="row px-3">
-                    {" "}
-                    <label className="mb-1">
-                      <h6 className="mb-0 text-sm">Gender</h6>
-                    </label>{" "}
-                    <input
-                      className="mb-4"
-                      type="string"
-                      name="gender"
-                      placeholder="Enter your gender"
-                      value={user.gender}
-                      onChange={handleInputs}
-                    />
-                  </div>
-                  <div className="row px-3">
-                    {" "}
-                    <label className="mb-1">
-                      <h6 className="mb-0 text-sm">Reasons</h6>
-                    </label>{" "}
-                    <input
-                      className="mb-4"
-                      type="string"
-                      name="reasons"
-                      placeholder="Enter your gender"
-                      value={user.reasons}
-                      onChange={handleInputs}
-                    />
-                  </div>
-                  <div className="row px-3">
-                    {" "}
-                    <label className="mb-1">
-                      <h6 className="mb-0 text-sm">Price</h6>
-                    </label>{" "}
-                    <input
-                      className="mb-4"
-                      type="Number"
-                      name="price"
-                      placeholder="Enter your gender"
-                      value={user.price}
-                      onChange={handleInputs}
-                    />
-                  </div>
-                  <div className="row px-3">
-                    {" "}
-                    <label className="mb-1">
-                      <h6 className="mb-0 text-sm">Recommendation</h6>
-                    </label>{" "}
-                    <input
-                      className="mb-4"
-                      type="Number"
-                      name="recommendation"
-                      placeholder="Enter your gender"
-                      value={user.recommendation}
-                      onChange={handleInputs}
-                    />
-                  </div>
-                  <br />
-                  <br />
-                  <div className="row mb-3 px-3">
-                    {" "}
-                    <button
-                      type="submit"
-                      className="btn btn-blue text-center"
-                      onClick={PostData}
-                    >
-                      Register
-                    </button>{" "}
-                  </div>
+                  {" "}
+                  <label className="mb-1">
+                    <h6 className="mb-0 text-sm">UserName</h6>
+                  </label>{" "}
+                  <input
+                    className="mb-4"
+                    type="text"
+                    name="username"
+                    placeholder="Enter a valid user name"
+                    value={user.username}
+                    onChange={handleInputs}
+                  />{" "}
+                  <label className="mb-1">
+                    <h6 className="mb-0 text-sm">Email Address</h6>
+                  </label>{" "}
+                  <input
+                    className="mb-4"
+                    type="text"
+                    name="email"
+                    placeholder="Enter a valid email address"
+                    value={user.email}
+                    onChange={handleInputs}
+                  />{" "}
+                  <label className="mb-1">
+                    <h6 className="mb-0 text-sm">Password</h6>
+                  </label>{" "}
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Enter password"
+                    value={user.password}
+                    onChange={handleInputs}
+                  />{" "}
+                  <label className="mb-1">
+                    <h6 className="mb-0 text-sm">Location</h6>
+                  </label>{" "}
+                  <input
+                    className="mb-4"
+                    type="text"
+                    name="location"
+                    placeholder="Enter your location."
+                    value={user.location}
+                    onChange={handleInputs}
+                  />{" "}
+                  <label className="mb-1">
+                    <h6 className="mb-0 text-sm">Phone No.</h6>
+                  </label>{" "}
+                  <input
+                    className="mb-4 no-spin"
+                    type="Number"
+                    name="phoneNo"
+                    placeholder="Enter your phone number."
+                    value={user.phoneNo}
+                    onChange={handleInputs}
+                  />
+                  {/* </form> */}
                 </div>
+                {/* <form method="POST"> */}
+                <div className="card2 card border-0 px-4 py-5">
+                  {" "}
+                  <label className="mb-1">
+                    <h6 className="mb-0 text-sm">Gender</h6>
+                  </label>{" "}
+                  <input
+                    className="mb-4"
+                    type="string"
+                    name="gender"
+                    placeholder="Enter your gender"
+                    value={user.gender}
+                    onChange={handleInputs}
+                  />{" "}
+                  <label className="mb-1">
+                    <h6 className="mb-0 text-sm">Reasons</h6>
+                  </label>{" "}
+                  <input
+                    className="mb-4"
+                    type="string"
+                    name="reasons"
+                    placeholder="Enter your gender"
+                    value={user.reasons}
+                    onChange={handleInputs}
+                  />{" "}
+                  <label className="mb-1">
+                    <h6 className="mb-0 text-sm">Price</h6>
+                  </label>{" "}
+                  <input
+                    className="mb-4 no-spin"
+                    type="Number"
+                    name="price"
+                    placeholder="Enter your gender"
+                    value={user.price}
+                    onChange={handleInputs}
+                  />
+                  <br />
+                  <br />{" "}
+                  <button
+                    type="submit"
+                    className="btn btn-blue text-center"
+                    onClick={PostData}
+                  >
+                    Register
+                  </button>{" "}
+                </div>
+                {/* </form> */}
               </form>
             </div>
           </div>

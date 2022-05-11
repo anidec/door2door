@@ -25,10 +25,6 @@ const workerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  verificationNo: {
-    type: String,
-    required: true,
-  },
   phoneNo: {
     type: Number,
     required: true,
@@ -56,10 +52,6 @@ const workerSchema = new mongoose.Schema({
   ],
   reasons: {
     type: String,
-    required: true,
-  },
-  recommendation: {
-    type: Number,
     required: true,
   },
   price: {

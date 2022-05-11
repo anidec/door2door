@@ -33,7 +33,8 @@ export default function Login() {
     if (res.status === 401 || res.status === 400 || !data) {
       window.alert("invalid details");
     } else {
-      dispatch({ type: "USER", payload: true });
+      if (role === 1) dispatch({ type: "USER", payload: 1 });
+      else dispatch({ type: "WORKER", payload: 2 });
       console.log("state is this:", state);
       // if (type == true) toast.dark("Login clicked!");
       navigate("/");
@@ -46,7 +47,7 @@ export default function Login() {
   return (
     <div>
       <div className="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
-        <div className="card card0 border-0">
+        <div className="card card0 border-0" style={{ display: "inline" }}>
           <div className="row d-flex">
             <div className="col-lg-6">
               <div className="card1 pb-5">
@@ -56,7 +57,7 @@ export default function Login() {
                 </div>
               </div>
             </div>
-            <ToastContainer
+            {/* <ToastContainer
               position="top-right"
               autoClose={5000}
               hideProgressBar={false}
@@ -66,7 +67,7 @@ export default function Login() {
               pauseOnFocusLoss
               draggable
               pauseOnHover
-            />
+            /> */}
             <div className="col-lg-6">
               <form method="POST">
                 <div className="card2 card border-0 px-4 py-5">

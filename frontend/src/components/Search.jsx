@@ -48,7 +48,7 @@ const Card = (props) => {
 
   return (
     <>
-      <div>
+      <div style={{ width: "500px", margin: "0px auto" }}>
         <input type="text" onChange={(e) => search(e)}></input>
       </div>
       <section className="cards">

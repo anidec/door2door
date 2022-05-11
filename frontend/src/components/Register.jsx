@@ -26,6 +26,7 @@ export default function Register() {
     e.preventDefault();
 
     const { username, email, password, location, phoneNo } = user;
+    localStorage.setItem("username", username);
     const res = await fetch("/register", {
       method: "POST",
       headers: {
@@ -50,7 +51,7 @@ export default function Register() {
   return (
     <div>
       <div className="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
-        <div className="card card border-0">
+        <div className="card card border-0" style={{ display: "inline" }}>
           <div className="row d-flex">
             <div className="col-lg-6">
               <div className="card1 pb-5">
@@ -60,7 +61,6 @@ export default function Register() {
                 </div>
               </div>
             </div>
-
             <div className="col-lg-6">
               <form method="POST">
                 <div className="card2 card border-0 px-4 py-5">
@@ -125,7 +125,7 @@ export default function Register() {
                       <h6 className="mb-0 text-sm">Phone No.</h6>
                     </label>{" "}
                     <input
-                      className="mb-4"
+                      className="mb-4 no-spin"
                       type="Number"
                       name="phoneNo"
                       placeholder="Enter your phone number."

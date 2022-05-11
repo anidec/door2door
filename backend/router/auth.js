@@ -70,7 +70,7 @@ router.post("/register", async (req, res) => {
   const mailOptions = {
     from: "door2door.jiit@gmail.com",
     to: email,
-    subject: "hello peter",
+    subject: "Registration",
     text: `Hello ${name}, Thanks for registering to our company.`,
   };
   transporter.sendMail(mailOptions, function (err, data) {
@@ -135,14 +135,11 @@ router.post("/registerWorker", async (req, res) => {
     email,
     password,
     location,
-    verificationNo,
     phoneNo,
     age,
     gender,
-    services,
     price,
     reasons,
-    recommendation,
   } = req.body;
   console.log(name, email, password);
   if (!name || !email || !password) {
@@ -158,13 +155,10 @@ router.post("/registerWorker", async (req, res) => {
       email,
       password,
       location,
-      verificationNo,
       phoneNo,
       age,
       gender,
-      services,
       price,
-      recommendation,
       reasons,
     });
     const workerRegister = await worker.save();
@@ -212,7 +206,7 @@ router.get("/get/profile/:id", (req, res) => {
     .then((err) => res.status(400));
 });
 router.post("/dt", async (req, res) => {
-  const { date, time, email, name, price } = req.body;
+  const { date, time, email, name, price, worker_email } = req.body;
   console.log(date, time, email, name, price);
   const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -223,11 +217,21 @@ router.post("/dt", async (req, res) => {
   });
   const mailOptions = {
     from: "door2door.jiit@gmail.com",
-    to: "animeshkaushik10@gmail.com",
+    to: email,
     subject: "regarding door2door services.",
     text: `Your date is ${date} and time is ${time} and name of worker is ${name} with price ${price}`,
   };
   transporter.sendMail(mailOptions, function (err, data) {
+    if (err) console.log(err);
+    else console.log("message sent");
+  });
+  const mailOptions2 = {
+    from: "door2door.jiit@gmail.com",
+    to: worker_email,
+    subject: "regarding door2door services.",
+    text: `Your order date is ${date} and time is ${time} and email of client is ${email}`,
+  };
+  transporter.sendMail(mailOptions2, function (err, data) {
     if (err) console.log(err);
     else console.log("message sent");
   });

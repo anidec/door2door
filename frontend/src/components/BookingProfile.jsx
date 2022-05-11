@@ -33,6 +33,7 @@ function BookingProfile(props) {
       <h1>{workers.gender}</h1>
       <h1>{workers.reasons}</h1>
       <h1>{workers.price}</h1>
+      {localStorage.setItem("worker_email", workers.email)}
       {state ? (
         <NavLink className="nav-link" to="/time">
           <button className="btn btn-danger">Book</button>

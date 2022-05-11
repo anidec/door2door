@@ -132,7 +132,7 @@ function Profile() {
                 <h6 className="mb-0 text-sm">Phone No.</h6>
               </label>{" "}
               <input
-                className="mb-4"
+                className="mb-4 no-spin"
                 type="Number"
                 name="phoneNo"
                 placeholder="Enter your phone number."

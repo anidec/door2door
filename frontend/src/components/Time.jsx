@@ -14,6 +14,7 @@ function Time() {
     const a = localStorage.getItem("user_email");
     const b = localStorage.getItem("name");
     const c = localStorage.getItem("price");
+    const d = localStorage.getItem("worker_email");
     console.log(b);
     axios
       .post("/dt", {
@@ -22,6 +23,7 @@ function Time() {
         email: a,
         name: b,
         price: c,
+        worker_email: d,
       })
       .then(function (response) {
         console.log(response);
@@ -47,6 +49,31 @@ function Time() {
         <button type="submit" className="btn btn-danger" onClick={PostData}>
           Submit
         </button>
+        <div class="dropdown show" style={{ marginBottom: "10%" }}>
+          <a
+            class="btn btn-secondary dropdown-toggle"
+            href="#"
+            role="button"
+            id="dropdownMenuLink"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Choose Service
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">
+              AC/Fridge Repairing
+            </a>
+            <a class="dropdown-item" href="#">
+              General Cleaning
+            </a>
+            <a class="dropdown-item" href="#">
+              Wall Washing
+            </a>
+          </div>
+        </div>
       </form>
     </div>
   );
