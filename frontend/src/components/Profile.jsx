@@ -83,7 +83,7 @@ function Profile() {
     return (
       <div>
         <form>
-          <div className="card2 card border-0 px-4 py-5">
+          <div className="card2 card border-0 px-4 py-5 profilehead">
             <div className="row px-3">
               {" "}
               <label className="mb-1">
@@ -143,7 +143,7 @@ function Profile() {
           </div>
         </form>
         <button
-          className="btn btn-danger"
+          className="btn btn-danger pubutton"
           onClick={() => updateItem(userData._id)}
         >
           Update

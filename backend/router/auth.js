@@ -4,6 +4,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const User = require("../model/userSchema");
 const Worker = require("../model/workerSchema");
+const Timing = require("../model/timingSchema");
 const Authenticate = require("../middleware/Authenticate");
 const nodemailer = require("nodemailer");
 const mailGun = require("nodemailer-mailgun-transport");
@@ -71,7 +72,7 @@ router.post("/register", async (req, res) => {
     from: "door2door.jiit@gmail.com",
     to: email,
     subject: "Registration",
-    text: `Hello ${name}, Thanks for registering to our company.`,
+    text: `Hello ${name}, Thanks for registering to door2door.`,
   };
   transporter.sendMail(mailOptions, function (err, data) {
     if (err) console.log(err);
@@ -208,6 +209,18 @@ router.get("/get/profile/:id", (req, res) => {
 router.post("/dt", async (req, res) => {
   const { date, time, email, name, price, worker_email } = req.body;
   console.log(date, time, email, name, price);
+  const worker = await Worker.findOne({ email: worker_email });
+  const client = await User.findOne({ email: email });
+  console.log(client.phoneNo);
+  const timing = new Timing({
+    date,
+    time,
+    email,
+    name,
+    price,
+    worker_email,
+  });
+  const temp = await timing.save();
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -219,7 +232,7 @@ router.post("/dt", async (req, res) => {
     from: "door2door.jiit@gmail.com",
     to: email,
     subject: "regarding door2door services.",
-    text: `Your date is ${date} and time is ${time} and name of worker is ${name} with price ${price}`,
+    text: `Your date is ${date} and time is ${time} and name of worker is ${name} with price ${price} and Phone Number ${worker.phoneNo}`,
   };
   transporter.sendMail(mailOptions, function (err, data) {
     if (err) console.log(err);
@@ -229,7 +242,7 @@ router.post("/dt", async (req, res) => {
     from: "door2door.jiit@gmail.com",
     to: worker_email,
     subject: "regarding door2door services.",
-    text: `Your order date is ${date} and time is ${time} and email of client is ${email}`,
+    text: `Your order date is ${date} and time is ${time} and phone Number of client is ${client.phoneNo} and name ${client.name}`,
   };
   transporter.sendMail(mailOptions2, function (err, data) {
     if (err) console.log(err);

@@ -41,7 +41,7 @@ const Card = (props) => {
     //   return;
     // }
     const newWorkers = orignalWorkers.filter((item) =>
-      item.name.includes(e.target.value)
+      item.location.includes(e.target.value)
     );
     setWorkers(newWorkers);
   };
@@ -64,7 +64,7 @@ const Card = (props) => {
                 />
                 <div className="card-info">
                   <span className="card-category card-color">
-                    {worker.location.toUpperCase()}
+                    {worker.location}
                   </span>
                   <h3 className="card-title">{worker.name}</h3>
                   <span className="card-category">{worker.phoneNo}</span>

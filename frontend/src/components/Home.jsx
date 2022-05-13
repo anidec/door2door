@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import main from "../images/main.png";
 import body from "../images/body.png";
 import body2 from "../images/body2.png";
@@ -8,8 +8,11 @@ import l3 from "../images/l3.png";
 import "../styles/home.css";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { UserContext } from "../App";
+import { NavLink } from "react-router-dom";
 
 function Home() {
+  const { state, dispatch } = useContext(UserContext);
   return (
     <div>
       <div className="container">
@@ -22,17 +25,48 @@ function Home() {
             </h1>
             <br />
             <p style={{ fontWeight: "200", fontSize: "1.2rem" }}>
-              Over 1 million people use Door2Door for their cleaning needs.
+              Over thousands of people needs door2door services for cleaning
+              needs.
             </p>
-            <button className="btn btn-primary book-btn">
-              Find a housekeeper now
-            </button>
+
+            {state == 1 ? (
+              <div>
+                <NavLink className="nav-link" to="/search">
+                  <button className="btn btn-primary book-btn">
+                    Find a housekeeper now
+                  </button>
+                </NavLink>
+              </div>
+            ) : (
+              <div>
+                <NavLink className="nav-link" to="/login">
+                  <button className="btn btn-primary book-btn">
+                    Find a housekeeper now
+                  </button>
+                </NavLink>
+              </div>
+            )}
+
             <br />
             <br />
             <span style={{ textDecoration: "underline", fontWeight: "500" }}>
-              <a style={{ cursor: "pointer" }}>
-                Are you a housekeeper looking for a clients?
-              </a>
+              {state == 1 ? (
+                <div>
+                  <NavLink className="nav-link" to="/search">
+                    <a style={{ cursor: "pointer" }}>
+                      Are you a housekeeper looking for a clients?
+                    </a>
+                  </NavLink>
+                </div>
+              ) : (
+                <div>
+                  <NavLink className="nav-link" to="/login">
+                    <a style={{ cursor: "pointer", color: "black" }}>
+                      Are you a housekeeper looking for a clients?
+                    </a>
+                  </NavLink>
+                </div>
+              )}
             </span>
           </div>
           <div className="col-lg-6">
@@ -105,7 +139,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="container">
+      <div className="container" id="get started">
         <br />
         <br />
         <h2 className="head">

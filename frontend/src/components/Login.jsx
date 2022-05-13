@@ -7,7 +7,7 @@ import Navbar from "./Navbar";
 import { UserContext } from "../App";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { NavLink } from "react-router-dom";
 export default function Login() {
   const { state, dispatch } = useContext(UserContext);
   const navigate = useNavigate();
@@ -144,10 +144,12 @@ export default function Login() {
                   </div>
                   <div className="row mb-4 px-3">
                     {" "}
-                    <small className="font-weight-bold">
-                      Don't have an account?{" "}
-                      <a className="text-danger ">Register</a>
-                    </small>{" "}
+                    <NavLink className="nav-link" to="/signin">
+                      <small className="font-weight-bold">
+                        Don't have an account?{" "}
+                        <a className="text-danger ">Register</a>
+                      </small>
+                    </NavLink>{" "}
                   </div>
                 </div>
               </form>

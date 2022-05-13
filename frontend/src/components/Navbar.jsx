@@ -161,12 +161,7 @@ function Navbar() {
                       Home
                     </NavLink>
                   </li>
-                  <li className="nav-item">
-                    {/* join */}
-                    <NavLink className="nav-link" to="/profile">
-                      Profile
-                    </NavLink>
-                  </li>
+
                   <li className="nav-item">
                     {/* join */}
                     <NavLink className="nav-link" to="/search">
@@ -175,12 +170,12 @@ function Navbar() {
                   </li>
                   <li className="nav-item">
                     <NavLink className="nav-link" to="/signin">
-                      Register(client)
+                      Client
                     </NavLink>
                   </li>
                   <li className="nav-item active">
                     <NavLink className="nav-link" to="/registerWorker">
-                      Register(housekeeper)
+                      Housekeeper
                     </NavLink>
                   </li>
                 </ul>
@@ -190,9 +185,14 @@ function Navbar() {
                       Log In
                     </NavLink>
                   </li>
-                  <button type="button" className="btn getstarted btn-primary">
-                    Get Started
-                  </button>
+                  <a href="#get started">
+                    <button
+                      type="button"
+                      className="btn getstarted btn-primary"
+                    >
+                      Get Started
+                    </button>
+                  </a>
                   {/* <h1>{userName}</h1> */}
                 </ul>
               </div>

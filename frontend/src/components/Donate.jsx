@@ -1,21 +1,20 @@
 import GooglePayButton from "@google-pay/button-react";
+import qr from "../images/qr.jpg";
 function Donate() {
   return (
     <div class="back">
       <center>
         <br></br>
         <h2 class="a">
-          <i>
-            "Saving one pet won't change the world,but for that one pet the
-            world will change forever."
-          </i>
+          <i>"Scan the QR code or sign in with gpay for payment"</i>
         </h2>
-
-        <img
-          className="position-absolute top-50 start-50 translate-middle"
-          src=""
-          alt="qr"
-        />
+        <div style={{ padding: "10%" }}>
+          <img
+            className="position-absolute top-50 start-50 translate-middle"
+            src={qr}
+            alt="qr"
+          />
+        </div>
         <br></br>
         <br></br>
         <GooglePayButton

@@ -26,6 +26,9 @@ export default function Register() {
     e.preventDefault();
 
     const { username, email, password, location, phoneNo } = user;
+    if (!ValidateEmail(email)) {
+      return;
+    }
     localStorage.setItem("username", username);
     const res = await fetch("/register", {
       method: "POST",
@@ -48,6 +51,19 @@ export default function Register() {
       navigate("/login");
     }
   };
+  function ValidateEmail(input) {
+    var validRegex =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+    if (input.match(validRegex)) {
+      return true;
+    } else {
+      alert("Invalid email address!");
+
+      return false;
+    }
+  }
+
   return (
     <div>
       <div className="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
@@ -133,6 +149,18 @@ export default function Register() {
                       onChange={handleInputs}
                     />
                   </div>
+                  {/* <div className="row px-3">
+                    <label className="mb-1">
+                      <h6 className="mb-0 text-sm">Otp:</h6>
+                    </label>{" "}
+                    <input
+                      className="mb-4 no-spin"
+                      type="Number"
+                      name="phoneNo"
+                      placeholder="Enter otp sent to your email."
+                      onChange={handleInputs}
+                    />
+                  </div> */}
                   <br />
                   <br />
                   <div className="row mb-3 px-3">

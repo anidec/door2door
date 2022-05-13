@@ -23,17 +23,17 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   tokens: [
-    { 
+    {
       token: {
         type: String,
         required: true,
       },
     },
   ],
-  role:{
-    type:Number,
-    default:1
-  }
+  role: {
+    type: Number,
+    default: 1,
+  },
 });
 
 //we are hashing the password

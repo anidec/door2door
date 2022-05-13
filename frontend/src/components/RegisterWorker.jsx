@@ -83,115 +83,128 @@ export default function RegisterWorker() {
                 </div>
               </div>
             </div>
-            <div className="wrapForm">
-              <form method="POST">
-                {/* <form method="POST"> */}
-                <div className="card2 card border-0 px-4 py-5">
-                  {" "}
-                  <label className="mb-1">
-                    <h6 className="mb-0 text-sm">UserName</h6>
-                  </label>{" "}
-                  <input
-                    className="mb-4"
-                    type="text"
-                    name="username"
-                    placeholder="Enter a valid user name"
-                    value={user.username}
-                    onChange={handleInputs}
-                  />{" "}
-                  <label className="mb-1">
-                    <h6 className="mb-0 text-sm">Email Address</h6>
-                  </label>{" "}
-                  <input
-                    className="mb-4"
-                    type="text"
-                    name="email"
-                    placeholder="Enter a valid email address"
-                    value={user.email}
-                    onChange={handleInputs}
-                  />{" "}
-                  <label className="mb-1">
-                    <h6 className="mb-0 text-sm">Password</h6>
-                  </label>{" "}
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Enter password"
-                    value={user.password}
-                    onChange={handleInputs}
-                  />{" "}
-                  <label className="mb-1">
-                    <h6 className="mb-0 text-sm">Location</h6>
-                  </label>{" "}
-                  <input
-                    className="mb-4"
-                    type="text"
-                    name="location"
-                    placeholder="Enter your location."
-                    value={user.location}
-                    onChange={handleInputs}
-                  />{" "}
-                  <label className="mb-1">
-                    <h6 className="mb-0 text-sm">Phone No.</h6>
-                  </label>{" "}
-                  <input
-                    className="mb-4 no-spin"
-                    type="Number"
-                    name="phoneNo"
-                    placeholder="Enter your phone number."
-                    value={user.phoneNo}
-                    onChange={handleInputs}
-                  />
+            <div className="col-lg-6">
+              <div className="wrapForm">
+                <form method="POST">
+                  {/* <form method="POST"> */}
+                  <div className="card2 card border-0 px-4 py-5">
+                    {" "}
+                    <label className="mb-1">
+                      <h6 className="mb-0 text-sm">UserName</h6>
+                    </label>{" "}
+                    <input
+                      className="mb-4"
+                      type="text"
+                      name="username"
+                      placeholder="Enter a valid user name"
+                      value={user.username}
+                      onChange={handleInputs}
+                    />{" "}
+                    <label className="mb-1">
+                      <h6 className="mb-0 text-sm">Email Address</h6>
+                    </label>{" "}
+                    <input
+                      className="mb-4"
+                      type="text"
+                      name="email"
+                      placeholder="Enter a valid email address"
+                      value={user.email}
+                      onChange={handleInputs}
+                    />{" "}
+                    <label className="mb-1">
+                      <h6 className="mb-0 text-sm">Password</h6>
+                    </label>{" "}
+                    <input
+                      type="password"
+                      name="password"
+                      placeholder="Enter password"
+                      value={user.password}
+                      onChange={handleInputs}
+                    />{" "}
+                    <label className="mb-1">
+                      <h6 className="mb-0 text-sm">Location</h6>
+                    </label>{" "}
+                    <input
+                      className="mb-4"
+                      type="text"
+                      name="location"
+                      placeholder="Enter your location."
+                      value={user.location}
+                      onChange={handleInputs}
+                    />{" "}
+                    <label className="mb-1">
+                      <h6 className="mb-0 text-sm">Phone No.</h6>
+                    </label>{" "}
+                    <input
+                      className="mb-4 no-spin"
+                      type="Number"
+                      name="phoneNo"
+                      placeholder="Enter your phone number."
+                      value={user.phoneNo}
+                      onChange={handleInputs}
+                    />
+                    {/* </form> */}
+                  </div>
+                  {/* <form method="POST"> */}
+                  <div className="card2 card border-0 px-4 py-5">
+                    {" "}
+                    <label className="mb-1">
+                      <h6 className="mb-0 text-sm">Gender</h6>
+                    </label>{" "}
+                    <input
+                      className="mb-4"
+                      type="string"
+                      name="gender"
+                      placeholder="Enter your gender"
+                      value={user.gender}
+                      onChange={handleInputs}
+                    />{" "}
+                    <label className="mb-1">
+                      <h6 className="mb-0 text-sm">Reasons</h6>
+                    </label>{" "}
+                    <input
+                      className="mb-4"
+                      type="string"
+                      name="reasons"
+                      placeholder="Enter your gender"
+                      value={user.reasons}
+                      onChange={handleInputs}
+                    />{" "}
+                    <label className="mb-1">
+                      <h6 className="mb-0 text-sm">Price</h6>
+                    </label>{" "}
+                    <input
+                      className="mb-4 no-spin"
+                      type="Number"
+                      name="price"
+                      placeholder="Enter your gender"
+                      value={user.price}
+                      onChange={handleInputs}
+                    />
+                    <label className="mb-1">
+                      <h6 className="mb-0 text-sm">Age</h6>
+                    </label>{" "}
+                    <input
+                      className="mb-4 no-spin"
+                      type="Number"
+                      name="age"
+                      placeholder="Enter your Age"
+                      value={user.age}
+                      onChange={handleInputs}
+                    />
+                    <br />
+                    <br />{" "}
+                    <button
+                      type="submit"
+                      className="btn btn-blue text-center"
+                      onClick={PostData}
+                    >
+                      Register
+                    </button>{" "}
+                  </div>
                   {/* </form> */}
-                </div>
-                {/* <form method="POST"> */}
-                <div className="card2 card border-0 px-4 py-5">
-                  {" "}
-                  <label className="mb-1">
-                    <h6 className="mb-0 text-sm">Gender</h6>
-                  </label>{" "}
-                  <input
-                    className="mb-4"
-                    type="string"
-                    name="gender"
-                    placeholder="Enter your gender"
-                    value={user.gender}
-                    onChange={handleInputs}
-                  />{" "}
-                  <label className="mb-1">
-                    <h6 className="mb-0 text-sm">Reasons</h6>
-                  </label>{" "}
-                  <input
-                    className="mb-4"
-                    type="string"
-                    name="reasons"
-                    placeholder="Enter your gender"
-                    value={user.reasons}
-                    onChange={handleInputs}
-                  />{" "}
-                  <label className="mb-1">
-                    <h6 className="mb-0 text-sm">Price</h6>
-                  </label>{" "}
-                  <input
-                    className="mb-4 no-spin"
-                    type="Number"
-                    name="price"
-                    placeholder="Enter your gender"
-                    value={user.price}
-                    onChange={handleInputs}
-                  />
-                  <br />
-                  <br />{" "}
-                  <button
-                    type="submit"
-                    className="btn btn-blue text-center"
-                    onClick={PostData}
-                  >
-                    Register
-                  </button>{" "}
-                </div>
-                {/* </form> */}
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>

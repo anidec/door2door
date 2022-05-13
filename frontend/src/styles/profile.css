@@ -1,0 +1,22 @@
+.profilehead, .pbutton{
+    display: flex;
+    justify-content: center;
+    margin: 0px auto;
+}
+.profilehead{
+    font-size: 2.2em;
+    padding: 10px;
+}
+.pbutton{
+    padding: 14px;
+    width: 20%;
+    font-size: 1.3rem;
+}
+.pubutton{
+    padding-bottom: 10px;
+    width: 10%;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    margin: 0px auto;
+}
