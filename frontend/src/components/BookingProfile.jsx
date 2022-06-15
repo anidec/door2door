@@ -26,37 +26,62 @@ function BookingProfile(props) {
 
   return (
     <div>
-      <h1 className="profilehead">
-        <span style={{ color: "blue" }}>Name</span> : {workers.name}
-      </h1>
-      <h1 className="profilehead">
-        <span style={{ color: "blue" }}>Email</span> : {workers.email}
-      </h1>
-      <h1 className="profilehead">
-        <span style={{ color: "blue" }}>Location</span> : {workers.location}
-      </h1>
-      <h1 className="profilehead">
-        <span style={{ color: "blue" }}>PhoneNo</span> : {workers.phoneNo}
-      </h1>
-      <h1 className="profilehead">
-        <span style={{ color: "blue" }}>Age</span> : {workers.age}
-      </h1>
-      <h1 className="profilehead">
-        <span style={{ color: "blue" }}>Gender</span> : {workers.gender}
-      </h1>
-      <h1 className="profilehead">
-        <span style={{ color: "blue" }}>Reasons for hiring</span> :{" "}
-        {workers.reasons}
-      </h1>
-      <h1 className="profilehead">
-        <span style={{ color: "blue" }}>Price</span>: {workers.price}
-      </h1>
-      {localStorage.setItem("worker_email", workers.email)}
-      {state ? (
-        <NavLink className="nav-link" to="/time">
-          <button className="btn btn-danger pbutton">Book</button>
-        </NavLink>
-      ) : null}
+      <div class="mt-4 mb-4 p-3 d-flex justify-content-center">
+        <div class="carda p-4 shadow">
+          <div class=" image d-flex flex-column justify-content-center align-items-center">
+            <button class="btna btn-secondary">
+              <img
+                src="https://i.imgur.com/wvxPV9S.png"
+                height="100"
+                width="100"
+              />
+            </button>
+            <div class="name mt-3"> {workers.name}</div> <div class="idd"></div>
+            <div class="d-flex flex-column justify-content-center align-items-center gap-2">
+              <div class="idd1">{workers.location}</div>{" "}
+              <div>
+                <i class="fa fa-copy"></i>
+              </div>
+              <div class=" flex flex-row profiletext ">
+                <div>
+                  <strong>PhoneNo:</strong> {workers.phoneNo}
+                </div>
+                <div>
+                  <strong>Age:</strong> {workers.age}
+                </div>
+                <div>
+                  <strong>Gender:</strong> {workers.gender}
+                </div>
+                <div>
+                  <strong>Price:</strong> {workers.price}
+                </div>
+              </div>
+            </div>
+            <div class="text mt-3 profiletext">
+              <center>
+                <div>
+                  <strong>
+                    <u>Reasons for Hiring</u>
+                  </strong>
+                  <br /> {workers.reasons}
+                </div>
+              </center>
+            </div>{" "}
+            <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
+              <div>
+                <i class="fa fa-google" />
+                <a href={`mailto:${workers.email}`}></a>
+              </div>{" "}
+            </div>
+          </div>
+          {localStorage.setItem("worker_email", workers.email)}
+          {state ? (
+            <NavLink className="nav-link" to="/time">
+              <button className="btn btn-danger pbutton">Book</button>
+            </NavLink>
+          ) : null}
+        </div>
+      </div>
     </div>
   );
 }

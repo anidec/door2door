@@ -70,7 +70,7 @@ const Card = (props) => {
                   <span className="card-category">{worker.phoneNo}</span>
                   &nbsp;&nbsp;&nbsp;&nbsp;
                   <span className="card-category card-color ">
-                    {worker.price}
+                    ${worker.price}
                   </span>
                   <br />
                   <br />
