@@ -1,0 +1,19 @@
+# If want to run compose file separately for frontend and backend
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: door2door_frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    command: ["npm", "start"]
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    external: true

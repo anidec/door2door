@@ -1,0 +1,38 @@
+# If want to run compose file separately for frontend and backend
+
+
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    ports:
+      - "6000:6000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - DATABASE=mongodb://mongo:27017/door2door
+      - SECRET_KEY=ABC
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+
+# Remove the volumes section if you are not using named volumes
+volumes:
+  mongo-data:
+
+networks:
+  app-network:
+    external: true

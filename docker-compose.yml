@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    networks:
+      - my-network
+
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "6000:6000"
+    environment:
+      - DATABASE=mongodb://mongo:27017/door2door
+    depends_on:
+      - mongo
+    networks:
+      - my-network
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - my-network
+
+volumes:
+  mongo-data:
+
+networks:
+  my-network:
