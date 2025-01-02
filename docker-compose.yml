@@ -4,18 +4,26 @@ services:
   frontend:
     build:
       context: ./frontend
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    command: ["npm", "start"]
     networks:
       - my-network
 
   backend:
     build:
       context: ./backend
+      dockerfile: Dockerfile
     ports:
       - "6000:6000"
+    volumes:
+      - ./backend:/app
     environment:
       - DATABASE=mongodb://mongo:27017/door2door
+      - SECRET_KEY=ABC
     depends_on:
       - mongo
     networks:
